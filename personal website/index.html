@@ -7,212 +7,160 @@
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Muaaz Alsiyami">
     <meta name="viewport" content="user-scalable=yes/no">
-    <title>MezBookstore</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number of visitors</title>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
-    <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- custom css file link  -->
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
 <body>
 
-<!-- Header Section -->
-<header class="header">
-    <div class="header-1">
-        <a href="#" class="logo"> <i class="fas fa-user"></i> Muaaz Alsiyami </a>
-        <div class="icons">
-            <a href="https://www.linkedin.com/in/muaaz-alsiyami" class="fab fa-linkedin"></a>
-            <a href="https://wa.me/+66812986684" class="fab fa-whatsapp"></a>
-            <a href="https://github.com/MuaazAlsiyami" class="fab fa-github"></a>
-            
-            <!-- زر تسجيل الدخول -->
-            <button onclick="document.getElementById('id01').style.display='block'" class="login-btn">Login</button>
-        </div>
-    </div>
+    <h1>Welcome to my website</h1>
 
-    <div class="header-2">
-        <nav class="navbar">
-            <a href="#about">About Me</a>
-            <a href="#contact">Contact</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#opinions">Testimonials</a>
-        </nav>
-    </div>
-</header>
-
-<!-- كود نموذج تسجيل الدخول -->
-<div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content animate" action="/action_page.php">
-        <div class="imgcontainer">
-            <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
-
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    </form>
-</div>
-
-<!-- header section ends -->
-
-<!-- bottom navbar  -->
-
-<nav class="bottom-navbar">
-    <a href="#home" class="fas fa-home"></a>
-    <a href="#box-container" class="fas fa-list"></a>
-    <a href="#Experience" class="fas fa-tags"></a>
-    <a href="#reviews" class="fas fa-comments"></a>
-</nav>
-
-<!-- login form  -->
-
-
-
-<!-- home section starts  -->
-
-<section class="home" id="home">
-
-    <div class="row">
-
-        <div class="content">
-            <h3>Hello,i'm<br><span>Muaaz Dueraoh</span></h3>
-            <p>student IT in University Fatoni third year </p>
-            <a href="#footer" class="btn">About me</a>
-        </div>
-
-        <div class="swiper books-slider">
-            <div class="swiper-wrapper(0)">
-                <a href="#" class="swiper-slide"><img src="image/IMG_E5145.JPG" alt=""></a>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-1">
+            <a href="#" class="logo"> <i class="fas fa-user"></i> Muaaz Alsiyami </a>
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/muaaz-alsiyami" class="fab fa-linkedin"></a>
+                <a href="https://wa.me/+66812986684" class="fab fa-whatsapp"></a>
+                <span id="visitor-count" style="margin-left: 10px; font-size: 20px; font-weight: bold;">Number of visitors: 0</span>
+                <a href="https://github.com/MuaazAlsiyami" class="fab fa-github"></a>
+                <!-- Login button -->
+                <button onclick="toggleLogin()" class="login-btn">Login</button>
             </div>
         </div>
 
+        <div class="header-2">
+            <nav class="navbar">
+                <a href="#about">About Me</a>
+                <a href="#contact">Contact</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#opinions">Testimonials</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div id="id01" class="modal" style="display: none;">
+        <span onclick="toggleLogin()" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+            </div>
+    
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+    
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+    
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+    
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="toggleLogin()" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
     </div>
 
-</section>
+    <!-- Bottom Navbar -->
+    <nav class="bottom-navbar">
+        <a href="#home" class="fas fa-home"></a>
+        <a href="#box-container" class="fas fa-list"></a>
+        <a href="#Experience" class="fas fa-tags"></a>
+        <a href="#reviews" class="fas fa-comments"></a>
+    </nav>
 
-<!-- home section ense  -->
-
-
-<!-- Opinions section starts  -->
-
-<section class="Opinions" id="Opinions">
-
-    <h1 class="heading"> <span>client's Opinions</span> </h1>
-
-    <div class="swiper Opinions-slider">
-
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide box">
-                <img src="" alt="">
-                <h3>Hotel Makkah</h3>
-                <p>During the cooperation period, Muaaz effectively improved and developed our computer systems,
-                     and contributed to improving operational efficiency thanks to his extensive knowledge and experience 
-                     in managing and implementing technical projects.
-                    </p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
+    <!-- Home Section Starts -->
+    <section class="home" id="home">
+        <div class="row">
+            <div class="content">
+                <h3>Hello, I'm<br><span>Muaaz Dueraoh</span></h3>
+                <p>Student IT in University Fatoni third year</p>
+                <a href="#footer" class="btn">About me</a>
+            </div>
+            <div class="swiper books-slider">
+                <div class="swiper-wrapper">
+                    <a href="#" class="swiper-slide"><img src="image/IMG_E5145.JPG" alt=""></a>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- Home Section Ends -->
 
-            <div class="swiper-slide box">
-                <img src="" alt="">
-                <h3>XYZ Company </h3>
-                <p>We are confident that Muaaz will be a valuable addition to any technical team, and we wish him well in his future career.</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+    <!-- Opinions Section Starts -->
+    <section class="Opinions" id="Opinions">
+        <h1 class="heading"> <span>Client's Opinions</span> </h1>
+        <div class="swiper Opinions-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <img src="" alt="">
+                    <h3>Hotel Makkah</h3>
+                    <p>During the cooperation period, Muaaz effectively improved and developed our computer systems,
+                        and contributed to improving operational efficiency thanks to his extensive knowledge and experience 
+                        in managing and implementing technical projects.</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <img src="" alt="">
+                    <h3>XYZ Company </h3>
+                    <p>We are confident that Muaaz will be a valuable addition to any technical team, and we wish him well in his future career.</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- Opinions Section Ends -->
 
+    <!-- Footer Section Starts -->
+    <section class="footer" id="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Location</h3>
+                <a href="image/saudi arabia.webp"> <i class="fas fa-map-marker-alt"></i> I was born in Saudi Arabia</a>
+                <a href="image/thai.jpg"> <i class="fas fa-map-marker-alt"></i> I live in Thailand</a>
             </div>
-
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#header"> <i class="fas fa-arrow-right"></i> About </a>
+                <a href="#contact"> <i class="fas fa-arrow-right"></i> Contact </a>
+                <a href="#Experience"> <i class="fas fa-arrow-right"></i> Experience </a>
+                <a href="#Project"> <i class="fas fa-arrow-right"></i> Project </a>
             </div>
-
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#"> <i class="fas fa-phone"></i> +66 81 298 6684</a>
+                <a href="#"> <i class="fas fa-envelope"></i> meezo.siyami7@gmail.com </a>
+            </div>
         </div>
-
-    </div>
-
-</section>
-
-<!-- Opinions section ends -->
-
-
-
-<!-- footer section starts  -->
-
-<section class="footer" id="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>Location</h3>
-            <a href="image/saudi arabia.webp"> <i class="fas fa-map-marker-alt"></i>i born in Saudi arabia</a>
-            <a href="image/thai.jpg"> <i class="fas fa-map-marker-alt"></i>i live in Thailand</a>
+        <div class="share">
+            <a href="https://web.facebook.com/meezo.alsiyami.3" class="fab fa-facebook-f"></a>
+            <a href="https://www.instagram.com/4amm7?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" class="fab fa-instagram"></a>
+            <a href="https://wa.me/+66812986684/" class="fab fa-whatsapp"></a>
         </div>
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a href="#header"> <i class="fas fa-arrow-right"></i> About </a>
-            <a href="#contact"> <i class="fas fa-arrow-right"></i> contact </a>
-            <a href="#Experience"> <i class="fas fa-arrow-right"></i> Experience </a>
-            <a href="#Project"> <i class="fas fa-arrow-right"></i> Project </a>
-        </div>
-
-
-
-        <div class="box">
-            <h3>contact info</h3>
-            <a href="#"> <i class="fas fa-phone"></i>+66 81 298 6684</a>
-            <a href="#"> <i class="fas fa-envelope"></i> meezo.siyami7@gmail.com </a>
-        </div>
-
-    </div>
-
-    <div class="share">
-        <a href="https://web.facebook.com/meezo.alsiyami.3" class="fab fa-facebook-f"></a>
-        <a href="https://www.instagram.com/4amm7?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr" class="fab fa-instagram"></a>
-        <a href="https://wa.me/+66812986684/" class="fab fa-whatsapp"></a>
-    </div>
-
-    <div class="credit"> created by <span> Muaaz Alsiyami </span>copyright ©2024 all rights reserved! </div>
-
-</section>
-
-<!-- footer section ends -->
-
-<!-- loader  -->
-
-
-
-
+        <div class="credit"> created by <span> Muaaz Alsiyami </span> copyright ©2024 all rights reserved! </div>
+    </section>
+    <!-- Footer Section Ends -->
+    
 </body>
 </html>
